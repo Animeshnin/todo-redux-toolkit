@@ -1,0 +1,38 @@
+.form{
+  display: flex;
+  gap: 20px;
+}
+
+.form_input{
+  width: 100%;
+  padding: 10px;
+  background-color: #e3e3e3;
+  border-radius: 5px;
+}
+
+.form_list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.form_input:focus{
+  animation: gray 1s infinite;
+}
+
+@keyframes gray {
+  0%, 100% {
+    box-shadow: 0 0 15px #afafaf;
+  }
+  50% {
+    box-shadow: 0 0 7px #afafaf;
+  }
+
+}
+
+.formlist__item__button{
+  padding: 5px 10px;
+  background-color: #e3e3e3;
+  border-radius: 5px;
+}

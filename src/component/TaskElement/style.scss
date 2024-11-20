@@ -1,0 +1,47 @@
+.task__summary{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  transition: before 0.2s;
+
+  &::before{
+    content: ' ';
+    width: 20px;
+    height: 20px;
+    left: 5px;
+    transition: rotate 0.2s;
+
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+    background-image: url("../../assets/img/icon_sloy.svg");
+    position: absolute;
+  }
+
+  &.active::before{
+    transform-origin: center;
+    transform: translateX(-50%) rotate(90deg);
+    transition: rotate 0.2s;
+
+
+
+    left: 0;
+  }
+}
+
+
+.task_element-input{
+  width: 100%;
+  border-radius: 8px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+@keyframes grow {
+  0%, 100%{
+    box-shadow: 0 0 15px #d8d8d8;
+  }
+  50% {
+    box-shadow: 0 0 7px #4a4a4a;
+  }
+}
