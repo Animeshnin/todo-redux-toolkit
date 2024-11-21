@@ -1,32 +1,28 @@
 import style from './style.module.scss'
-import  {useState} from "react";
+import {useDispatch} from "react-redux";
+import {addParentToDoItem, removeParentToDoItem} from "../../store/slices/updateTodoItem.ts";
+import MyButton from "../UI/Button/MyButton.tsx";
 
 function FormInput() {
-
-    const [input, setInput] = useState<string>('')
+    const dispatch = useDispatch()
 
     const addTask = () => {
-
+        dispatch(addParentToDoItem())
     }
+
+    const handleClear = () => {
+        dispatch(removeParentToDoItem());
+    };
 
     return (
         <form className={style.form}>
-            <input value={input} onChange={(e) => setInput(e.target.value)} className={style.form_input} type="text"
-                   placeholder={'Добавить задачу'}/>
             <ul className={style.form_list}>
                 <li className={style.formlist__item}>
-                    <button type={'button'} title={'Добавить задачу'}
-                            onClick={() => {
-                                addTask()
-                            }}
-                            className={style.formlist__item__button}>
-                        Добавить
-                    </button>
+                    <MyButton onClick={addTask}>Добавить</MyButton>
                 </li>
                 <li className={style.formlist__item}>
-                    <button type={'button'}  title={'Очистить'}
-                            className={style.formlist__item__button}>Очистить
-                    </button>
+                    <MyButton  onClick={handleClear}>Очистить
+                    </MyButton>
                 </li>
             </ul>
         </form>
