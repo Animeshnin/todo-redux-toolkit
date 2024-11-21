@@ -5,6 +5,22 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+
+}
+
+.formlist__item{
+  &:first-child{
+    display: flex;
+    margin-right: 5px;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .form_input{
+    border: 1px solid #fff;
+    padding: 10px;
+    width: 70%;
+  }
 }
 
 .form_input:focus{
@@ -13,10 +29,10 @@
 
 @keyframes gray {
   0%, 100% {
-    box-shadow: 0 0 15px #afafaf;
+    box-shadow: 0 0 15px #fff;
   }
   50% {
-    box-shadow: 0 0 7px #afafaf;
+    box-shadow: 0 0 7px #fff;
   }
 
 }

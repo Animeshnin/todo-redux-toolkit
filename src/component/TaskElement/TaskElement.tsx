@@ -1,10 +1,9 @@
 import "./style.scss";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import MyButton from "../UI/Button/MyButton.tsx";
 import Modal from "../Modal/Modal.tsx";
 
-
-interface Task {
+export interface Task {
   id: number | string;
   text: string;
   children?: Task[]; // Массив дочерних задач
@@ -14,7 +13,7 @@ type TTaskElementProps = {
   task: Task;
 };
 
-function  TaskElement({ task }: TTaskElementProps) {
+function TaskElement({ task }: TTaskElementProps) {
   const [active, setActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [renderChildComponent, setRenderChildComponent] = useState(false);
@@ -26,21 +25,21 @@ function  TaskElement({ task }: TTaskElementProps) {
     }
   }, [task]); // Зависимость от task
   return (
-    <>
-      <details className={"task__element "}>
+    <section className={'task'}>
+      <details className={"task__element"}>
         <summary
           onClick={() => setActive((prevState) => !prevState)}
           className={`task__summary ${active ? "active" : ""}`}
         >
-          <h1>Задача {task.id}</h1>
+          <h1>{task.id} {task.text}</h1>
           <input type="checkbox" checked={active} />
         </summary>
-        {renderChildComponent && task.children && (
-            // Рендерим дочерние задачи
-            task.children.map((childTask) => (
-                <TaskElement key={childTask.id} task={childTask} />
-            ))
-        )}
+        {renderChildComponent &&
+          task.children &&
+          // Рендерим дочерние задачи
+          task.children.map((childTask) => (
+            <TaskElement key={childTask.id} task={childTask} />
+          ))}
         <MyButton
           onClick={() => setModalActive((prevState) => !prevState)}
           width={"20%"}
@@ -51,7 +50,10 @@ function  TaskElement({ task }: TTaskElementProps) {
       {modalActive && (
         <Modal active={modalActive} setActive={setModalActive} id={task.id} />
       )}
-    </>
+      <article className={'task__text'}>
+        Текст
+      </article>
+    </section>
   );
 }
 

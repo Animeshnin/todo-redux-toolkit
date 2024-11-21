@@ -6,7 +6,9 @@ function TaskList() {
     const tasks = useSelector((state: RootState) => state.addTodoItem.items)
     return (
       <>
-        {tasks.map((task) => (
+        {tasks.map((task  ) => (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             <TaskElement task={task} />
         ))}
       </>

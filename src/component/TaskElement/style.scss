@@ -30,12 +30,11 @@
 }
 
 
-.task_element-input{
-  width: 100%;
-  border-radius: 8px;
-  padding: 5px;
-  border: 1px solid #ccc;
+.task__element{
+  width: 50%;
 }
+
+
 
 @keyframes grow {
   0%, 100%{
@@ -43,5 +42,16 @@
   }
   50% {
     box-shadow: 0 0 7px #4a4a4a;
+  }
+}
+
+.task{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  &__text{
+    width: 50%;
+    background-color: #DCE0E1;
+    min-height: 300px;
   }
 }
