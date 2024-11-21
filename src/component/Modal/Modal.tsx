@@ -30,19 +30,20 @@ function Modal({ active, setActive, id }: ModalProps) {
     >
       <div className="modal__content" onClick={(e) => e.stopPropagation()}>
         <div className={"modal-close-button"} onClick={() => setActive(false)}>
-          <IoCloseOutline/>
+          <IoCloseOutline />
         </div>
-        <div className={'modal-content-function'}>
-          <input
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              type="text"
-              name="input"
-              id="input"
-              placeholder={"Добавить задачу"}
-          />
-          <MyButton width={'20%'} onClick={() => addChildToDo()}>Добавить</MyButton>
-        </div>
+        <input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          type="text"
+          name="input"
+          id="input"
+          placeholder={"Добавить задачу"}
+        />
+        <br />
+        <MyButton width={"100%"}  onClick={() => addChildToDo()}>
+          Добавить
+        </MyButton>
       </div>
     </div>
   );

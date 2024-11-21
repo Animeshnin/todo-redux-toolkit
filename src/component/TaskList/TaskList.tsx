@@ -7,7 +7,7 @@ function TaskList() {
     return (
       <>
         {tasks.map((task) => (
-            <TaskElement taskId={task.id} />
+            <TaskElement task={task} />
         ))}
       </>
     );

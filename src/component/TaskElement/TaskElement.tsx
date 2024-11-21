@@ -1,16 +1,30 @@
 import "./style.scss";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import MyButton from "../UI/Button/MyButton.tsx";
 import Modal from "../Modal/Modal.tsx";
 
+
+interface Task {
+  id: number | string;
+  text: string;
+  children?: Task[]; // Массив дочерних задач
+}
+
 type TTaskElementProps = {
-  taskId: number | string;
+  task: Task;
 };
 
-function TaskElement({ taskId }: TTaskElementProps) {
+function  TaskElement({ task }: TTaskElementProps) {
   const [active, setActive] = useState(false);
-
   const [modalActive, setModalActive] = useState(false);
+  const [renderChildComponent, setRenderChildComponent] = useState(false);
+  useEffect(() => {
+    if (task.children && task.children.length > 0) {
+      setRenderChildComponent(true);
+    } else {
+      setRenderChildComponent(false);
+    }
+  }, [task]); // Зависимость от task
   return (
     <>
       <details className={"task__element "}>
@@ -18,9 +32,15 @@ function TaskElement({ taskId }: TTaskElementProps) {
           onClick={() => setActive((prevState) => !prevState)}
           className={`task__summary ${active ? "active" : ""}`}
         >
-          <h1>Задача {taskId}</h1>
+          <h1>Задача {task.id}</h1>
           <input type="checkbox" checked={active} />
         </summary>
+        {renderChildComponent && task.children && (
+            // Рендерим дочерние задачи
+            task.children.map((childTask) => (
+                <TaskElement key={childTask.id} task={childTask} />
+            ))
+        )}
         <MyButton
           onClick={() => setModalActive((prevState) => !prevState)}
           width={"20%"}
@@ -29,7 +49,7 @@ function TaskElement({ taskId }: TTaskElementProps) {
         </MyButton>
       </details>
       {modalActive && (
-        <Modal active={modalActive} setActive={setModalActive} id={taskId}/>
+        <Modal active={modalActive} setActive={setModalActive} id={task.id} />
       )}
     </>
   );

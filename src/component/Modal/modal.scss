@@ -12,17 +12,33 @@
   pointer-events: none;
   z-index: 999;
 
+
   &.active{
     opacity: 1;
     pointer-events: all;
   }
 
   &__content{
-    display: flex;
     padding: 40px;
     position: relative;
     border-radius: 12px;
+    height: 250px;
+    width: 500px;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    input{
+      margin-top: 20px;
+      border: 2px solid #0cd0fb;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  }
+
+  &-button{
+
   }
 
   &-close-button{

@@ -5,13 +5,14 @@ type MyButtonProps = {
   onClick?: () => void;
   children?: React.ReactNode;
   width?: string;
+  styleB?: string,
 };
 
-function MyButton({ onClick, children, width = '100%' }: MyButtonProps) {
+function MyButton({ onClick, styleB, children, width = '100%' }: MyButtonProps) {
   return (
     <button
       type={"button"}
-      className={style.formlist__item__button}
+      className={`${style.formlist__item__button} ${styleB}`}
       onClick={onClick}
       style={{ width: `${width}` }}
     >
