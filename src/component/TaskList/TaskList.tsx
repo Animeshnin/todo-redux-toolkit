@@ -9,7 +9,7 @@ function TaskList() {
         {tasks.map((task  ) => (
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
-            <TaskElement task={task} />
+            <TaskElement key={task.id} task={task} />
         ))}
       </>
     );

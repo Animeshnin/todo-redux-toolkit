@@ -30,6 +30,9 @@
 }
 
 
+.task__element{
+  min-width: 50%;
+}
 
 
 
@@ -56,13 +59,4 @@
 .task__text{
   padding: 10px;
   border-radius: 10px;
-  position: relative;
-}
-
-.task-close__button{
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 28px;
 }

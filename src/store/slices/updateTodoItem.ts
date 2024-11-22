@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface TodoItemState {
+export interface TodoItemState {
   items: TodoItem[]; // Массив задач
+  text?: string;
+  checkedInput: boolean
 }
 
 export interface TodoItem {
@@ -10,8 +12,10 @@ export interface TodoItem {
   children?: TodoItem[];
 }
 
-const initialState: TodoItemState = {
+export const initialState: TodoItemState = {
   items: [],
+  text: '',
+  checkedInput: false,
 };
 
 let nextId = 0;
@@ -59,10 +63,14 @@ export const addTodoItemSlice = createSlice({
         });
       }
     },
+    getTextToDoItemRedux: (state, action) => {
+      state.text = action.payload.taskText;
+      state.checkedInput = true
+    }
   },
 });
 
-export const { addParentToDoItem, removeParentToDoItem, addChildToDoItem } =
+export const { addParentToDoItem, removeParentToDoItem, addChildToDoItem, getTextToDoItemRedux } =
   addTodoItemSlice.actions;
 
 export default addTodoItemSlice.reducer;

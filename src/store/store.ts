@@ -3,7 +3,7 @@ import addTodoItemSlice from "./slices/updateTodoItem.ts";
 
 export const store = configureStore({
     reducer: {
-        addTodoItem: addTodoItemSlice
+        addTodoItem: addTodoItemSlice,
     },
 })
 
